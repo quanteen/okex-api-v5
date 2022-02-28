@@ -8,20 +8,23 @@ import okex.status_api as Status
 import json
 
 
+##
+##Sandbox:
+
 if __name__ == '__main__':
-    api_key = ""
-    secret_key = ""
-    passphrase = ""
+    api_key = "89c3e335-13b8-454a-ae46-72809a4eb5e3"
+    secret_key = "D260C32EF9AF3039EF8E473E683ED08D"
+    passphrase = "sanbox"
     # flag是实盘与模拟盘的切换参数 flag is the key parameter which can help you to change between demo and real trading.
-    # flag = '1'  # 模拟盘 demo trading
-    flag = '0'  # 实盘 real trading
+    flag = '1'  # 模拟盘 demo trading
+    # flag = '1'  # 实盘 real trading
 
     # account api
     accountAPI = Account.AccountAPI(api_key, secret_key, passphrase, False, flag)
     # 查看账户持仓风险 GET Position_risk
     # result = accountAPI.get_position_risk('SWAP')
     # 查看账户余额  Get Balance
-    # result = accountAPI.get_account()
+    result = accountAPI.get_account()
     # 查看持仓信息  Get Positions
     # result = accountAPI.get_positions('FUTURES', 'BTC-USD-210402')
     # 账单流水查询（近七天） Get Bills Details (recent 7 days)
@@ -201,7 +204,7 @@ if __name__ == '__main__':
     # result = subAccountAPI.control_transfer(ccy='', amt='', froms='', to='', fromSubAccount='', toSubAccount='')
 
     # 系统状态API(仅适用于实盘) system status
-    Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)
+    # Status = Status.StatusAPI(api_key, secret_key, passphrase, False, flag)
     # 查看系统的升级状态
     # result = Status.status()
     print(json.dumps(result))
